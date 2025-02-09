@@ -24,4 +24,55 @@ Este repositório explora como **utilizar o Azure OpenAI na prática**, com exem
 🔹 **Chamadas de API** – Como interagir com os modelos do Azure OpenAI usando REST APIs.  
 🔹 **Uso do SDK da Azure** – Implementação de chamadas via Python e outras linguagens.  
 🔹 **Integração com Semantic Kernel** – Construção de aplicações dinâmicas que combinam IA com fluxos de trabalho personalizados.  
-🔹 **Casos de Uso Práticos** – Aplicações em chatbots, assistentes virtuais, automação de atendimento e análise de sentimentos.
+🔹 **Casos de Uso Práticos** – Aplicações em chatbots, assistentes virtuais, automação de atendimento e análise de sentimentos.  
+
+---
+
+## 🌐 Uso da API do Azure OpenAI
+O **Azure OpenAI API** permite que os desenvolvedores interajam diretamente com os modelos de IA por meio de chamadas REST. Com isso, é possível integrar inteligência artificial em diversas aplicações de forma flexível e escalável.
+
+### 🔹 Exemplo de Chamada de API em Python
+```python
+import openai
+
+openai.api_type = "azure"
+openai.api_base = "https://seu-endpoint.openai.azure.com/"
+openai.api_key = "sua-chave-aqui"
+openai.api_version = "2023-06-01-preview"
+
+response = openai.ChatCompletion.create(
+    engine="gpt-4",
+    messages=[{"role": "user", "content": "Olá, como você está?"}]
+)
+
+print(response["choices"][0]["message"]["content"])
+```
+
+Essa API pode ser usada para diversas finalidades, incluindo automatização de processos, análise de textos e geração de conteúdo.
+
+---
+
+## 🤖 Integração com Semantic Kernel
+O **Semantic Kernel** é um SDK que permite a criação de **aplicações baseadas em IA**, combinando modelos do OpenAI com fluxos de trabalho personalizados e integração com sistemas empresariais.
+
+### 🔹 Recursos do Semantic Kernel:
+✅ **Memória Contextual** – Gerencia e armazena informações ao longo do tempo.  
+✅ **Orquestração de Tarefas** – Permite a execução de fluxos complexos utilizando IA.  
+✅ **Extensibilidade** – Integração fácil com outros serviços da Azure e OpenAI.  
+
+### 🔹 Exemplo de Uso no Semantic Kernel
+```python
+from semantic_kernel import Kernel
+
+kernel = Kernel()
+kernel.add_openai_chat_completion(
+    model_name="gpt-4",
+    api_key="sua-chave-aqui",
+    api_base="https://seu-endpoint.openai.azure.com/"
+)
+
+response = kernel.run("Explique a importância do Azure OpenAI em poucas palavras.")
+print(response)
+```
+
+O Semantic Kernel possibilita a criação de **soluções de IA altamente interativas e contextuais**, permitindo maior personalização e controlo sobre a experiência do utilizador.
